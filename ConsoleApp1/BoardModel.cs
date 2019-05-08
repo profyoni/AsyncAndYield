@@ -4,7 +4,7 @@ using System.Timers;
 
 namespace ConsoleApp1
 {
-    public class BoardModel
+    public class BoardModel : IDisposable
     {
         private Random randomGen = new Random();
         public BoardModel()
@@ -41,10 +41,12 @@ namespace ConsoleApp1
 
         #endregion
 
+
         public void Dispose()
         {
             _aTimer.Stop();
             _aTimer.Dispose();
+            _aTimer?.Dispose();
         }
     }
 }
