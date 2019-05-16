@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table style="width: 100%">
+    @{
+        for (var row = 0; row < 8; row++)
+        {
+            <tr>
+                @{
+                    for (int col = 0; col < 10; col++)
+                    {
+                        <td> <a href="http://localhost:6069/Home/GameMove?x=2&y=3"> - </a> </td>
+                    }
+                }
+            </tr>
+        }
+    }
+
+</table> 
