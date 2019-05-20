@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebApplication1.Models.MinesweeperModel 
+
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
@@ -6,17 +8,24 @@
 
 <table style="width: 100%">
     @{
-        for (var row = 0; row < 8; row++)
+        for (var row = 0; row < Model.SizeY; row++)
         {
             <tr>
                 @{
-                    for (int col = 0; col < 10; col++)
+                    for (int col = 0; col < Model.SizeX; col++)
                     {
-                        <td> <a href="http://localhost:6069/Home/GameMove?x=2&y=3"> - </a> </td>
+                        <td style="width: 30%">
+                            @Html.ActionLink((Model[col,row] ? "_": "X"), 
+                           "GameMove", 
+                           new { x = col, y = row })
+                            @Html.ActionLink((Model[col,row] ? "_": "X"), 
+                                "Flag", 
+                                new { x = col, y = row })
+                        </td>
                     }
                 }
             </tr>
         }
     }
 
-</table> 
+</table>
